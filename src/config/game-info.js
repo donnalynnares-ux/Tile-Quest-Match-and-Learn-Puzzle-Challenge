@@ -3,11 +3,11 @@
 const pkg = require('../../package.json');
 
 module.exports = {
-  slug: 'Title-Quest-Match-and-Learn-Puzzle-Challenge',            // your group's game, lower case with hyphens, for example shelf-climb
-  name: 'Title-Quest-Match-and-Learn-Puzzle-Challenge',            // the name players will see
+  slug: 'Tile-Quest-Match-and-Learn-Puzzle-Challenge',            // your group's game, lower case with hyphens, for example shelf-climb
+  name: 'Tile-Quest-Match-and-Learn-Puzzle-Challenge',            // the name players will see
   team: 'Group 4 (3-1)',            // your group's name and section, for example Bookworms (3-1)
   developer: 'donnalynnares-ux',       // YOUR GitHub username: this build is yours
-  description: 'Title Quest: Match and Learn- Puzzle Challenge is an educational game where players match the required tiles, complete puzzles, and answer quizzes to pass and each level. Players earn points and advance to higher levels while improving their memory, focus, and knowledge.',     // one sentence about how the game is played
+  description: 'Tile Quest: Match and Learn- Puzzle Challenge is an educational game where players match the required tiles, complete puzzles, and answer quizzes to pass and each level. Players earn points and advance to higher levels while improving their memory, focus, and knowledge.',     // one sentence about how the game is played
   min_players: 1,               // change to the limits your game is designed for
   max_players: 20,
   version: pkg.version,         // read from package.json, do not edit here
