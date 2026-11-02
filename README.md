@@ -76,3 +76,6 @@ Base URL: `http://localhost:3001/api/v1`
 | npm run db:check | Counts the rows in every table |
 | npm run db:reset | Empties the database, rebuilds every table and reloads the seed data |
 | npm run check | Runs the same automatic check that GitHub runs after every push |
+## What "completed" means in my game
+
+A player is marked as `completed = true` when the number of answers submitted by the player (`answers` table) equals the total number of questions configured for that session's set (`questions` table).
