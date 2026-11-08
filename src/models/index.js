@@ -14,4 +14,8 @@ const sequelize = new Sequelize(
 const User = require('./user')(sequelize, DataTypes);
 const QuestionSet = require('./question-set')(sequelize, DataTypes);
 
+User.hasMany(QuestionSet, { foreignKey: 'host_id' });
+QuestionSet.belongsTo(User, { foreignKey: 'host_id', as: 'host' });
+
 module.exports = { sequelize, Sequelize, DataTypes, User, QuestionSet };
+
