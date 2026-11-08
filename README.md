@@ -60,11 +60,16 @@ Base URL: `http://localhost:3001/api/v1`
 
 ## What "completed" means in my game
 
-[One or two sentences: when does a player count as having completed a game? For example: "A player completed the game when they answered every question, even if some answers were wrong or timed out."]
+A player is marked as `completed = true` when the number of answers submitted by the player (`answers` table) equals the total number of questions configured for that session's set (`questions` table).
 
 ## Tables
 
-[List your tables, one line each, in the order of your migrations.]
+1. `admins` - Stores system hosts and administrative accounts.
+2. `players` - Stores registered players and guest player entries.
+3. `levels` - Stores game difficulty levels and configurations.
+4. `puzzles` - Stores puzzle challenges associated with levels.
+5. `questions` - Stores questions and answers for each puzzle set.
+6. `game_progress` - Stores session state, player responses, and scores.
 
 ## Database scripts
 
