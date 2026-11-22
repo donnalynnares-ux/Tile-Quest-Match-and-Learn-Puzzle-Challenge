@@ -1,9 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const { getLevels, getOrCreatePlayer, submitQuizAnswer } = require('../controllers/gameController');
+'use strict';
 
-router.get('/levels', getLevels);
-router.post('/player', getOrCreatePlayer);
-router.post('/quiz/submit', submitQuizAnswer);
+const express = require('express');
+const models = require('../models');
+const createAuthService = require('../services/auth.service');
+const createAuthController = require('../controllers/auth.controller');
+const createAuthRoutes = require('./auth.routes');
+
+const router = express.Router();
+
+const authService = createAuthService(models);
+const authController = createAuthController(authService);
+
+router.use('/auth', createAuthRoutes(authController));
 
 module.exports = router;

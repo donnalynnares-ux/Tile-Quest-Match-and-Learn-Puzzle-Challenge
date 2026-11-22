@@ -1,12 +1,16 @@
-// The single place that maps URLs to route files.
-const { Router } = require('express');
+'use strict';
 
-const router = Router();
+const express = require('express');
+const models = require('../models');
+const createAuthService = require('../services/auth.service');
+const createAuthController = require('../controllers/auth.controller');
+const createAuthRoutes = require('./auth.routes');
 
-// Hub Contract endpoints
-router.use('/health', require('./health.routes'));
-router.use('/game-info', require('./game-info.routes'));
-router.use('/results', require('./results.routes'));
-router.use('/question-sets', require('./question-sets.routes')); // Fixed filename (plural)
+const router = express.Router();
+
+const authService = createAuthService(models);
+const authController = createAuthController(authService);
+
+router.use('/auth', createAuthRoutes(authController));
 
 module.exports = router;

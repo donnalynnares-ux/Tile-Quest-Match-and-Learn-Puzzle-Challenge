@@ -1,0 +1,8 @@
+# Use this workspace to collaborate
+workspace:
+  id: 6a899e51-3c6e-4bcf-8b82-2b35444806ef
+
+localResources:
+  specs:
+    - ../src/docs/openapi.yaml
+    - ../cs313-weeks12-18-kit/src/docs/openapi.yaml

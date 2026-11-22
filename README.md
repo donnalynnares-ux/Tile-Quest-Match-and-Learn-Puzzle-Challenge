@@ -1,9 +1,9 @@
-# [Tile Quest Match and Learn Puzzle Challenge*] API
+# Tile Quest Match and Learn Puzzle Challenge API
 
 Backend API for **Tile Quest Match and Learn Puzzle Challenge**, a tournament game for the SorSU Bulan Campus library.
 CS 313 Software Engineering 1, A.Y. 2026-2027.
 
-- Developer: Donnalyn Nares (donnalynnares-ux), BSCS 3-1 
+- Developer: Donnalyn Nares (donnalynnares-ux), BSCS 3-1
 - Group and game concept: Group 4 Tile Quest: Match and Learn- Puzzle Challenge is an educational game where players match the required tiles, complete puzzles, and answer quizzes to pass and each level. Players earn points and advance to higher levels while improving their memory, focus, and knowledge.
 
 This is my own build of my group's game concept. Every commit in this repository was made by me, with Git, on my own computer or in my own Codespace.
@@ -19,68 +19,8 @@ This is my own build of my group's game concept. Every commit in this repository
 
 ## Setup
 
-```
+```bash
 git clone [repository-url]
 cd [folder-name]
 npm install
-```
-
-Copy `.env.example` to `.env`, then put your own PostgreSQL password in `DB_PASSWORD`.
-
-```
-npm run db:create     (first time only)
-npm run db:migrate
-npm run db:seed
-npm run db:check
-npm run dev
-```
-
-## Environment variables
-
-| Key | Example | Purpose |
-|---|---|---|
-| NODE_ENV | development | Which config block to use |
-| PORT | 3001 | Port the API listens on (the library assigns the final port at deployment) |
-| DB_HOST | 127.0.0.1 | PostgreSQL host |
-| DB_PORT | 5432 | PostgreSQL port |
-| DB_NAME | your_game_slug | Database name: your game slug, with underscores |
-| DB_USER | postgres | Database user |
-| DB_PASSWORD | (your own) | Database password. Never commit this. |
-| HUB_API_KEY | dev-hub-key | Key the Library Game Hub sends to read results. The library gives the real one at deployment. |
-
-## Endpoints (Hub Contract v1.2)
-
-Base URL: `http://localhost:3001/api/v1`
-
-| Method | Path | Purpose | Success |
-|---|---|---|---|
-| GET | /health | Is the API up and can it reach the database? | 200 (503 when the database is down) |
-| GET | /game-info | Slug, name, group, developer, description, player limits, version | 200 |
-| GET | /results | Finished games, every player, and the top 3. Needs the `X-Hub-Key` header. Optional `?since=` | 200 (401 without the key) |
-
-## What "completed" means in my game
-
-A player is marked as `completed = true` when the number of answers submitted by the player (`answers` table) equals the total number of questions configured for that session's set (`questions` table).
-
-## Tables
-
-1. `admins` - Stores system hosts and administrative accounts.
-2. `players` - Stores registered players and guest player entries.
-3. `levels` - Stores game difficulty levels and configurations.
-4. `puzzles` - Stores puzzle challenges associated with levels.
-5. `questions` - Stores questions and answers for each puzzle set.
-6. `game_progress` - Stores session state, player responses, and scores.
-
-## Database scripts
-
-| Command | What it does |
-|---|---|
-| npm run db:migrate | Runs migrations that have not run yet |
-| npm run db:migrate:status | Lists every migration as up or down |
-| npm run db:seed | Loads the seed data |
-| npm run db:check | Counts the rows in every table |
-| npm run db:reset | Empties the database, rebuilds every table and reloads the seed data |
-| npm run check | Runs the same automatic check that GitHub runs after every push |
-## What "completed" means in my game
-
-A player is marked as `completed = true` when the number of answers submitted by the player (`answers` table) equals the total number of questions configured for that session's set (`questions` table).
+cp .env.example .env

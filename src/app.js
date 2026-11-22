@@ -1,17 +1,7 @@
-// Builds the Express app. Does NOT start listening - server.js does that.
-const express = require('express');
-const routes = require('./routes');
-const notFound = require('./middlewares/not-found');
-const errorHandler = require('./middlewares/error-handler');
+const createAuthService = require('./services/auth.service');
+const createAuthController = require('./controllers/auth.controller');
+const createAuthRoutes = require('./routes/auth.routes');
 
-const app = express();
-
-app.use(express.json());
-
-// Hub Contract: every endpoint lives under /api/v1
-app.use('/api/v1', routes);
-
-app.use(notFound);
-app.use(errorHandler);
-
-module.exports = app;
+const authService = createAuthService(models);
+const authController = createAuthController(authService);
+app.use('/api/v1/auth', createAuthRoutes(authController));
