@@ -13,5 +13,6 @@ router.post('/', rules.createRules, validate, controller.create);
 router.get('/:id', rules.idParam, validate, controller.get);
 router.patch('/:id', rules.updateRules, validate, controller.update);
 router.delete('/:id', rules.idParam, validate, controller.remove);
+router.use('/question-sets', require('./question-set.routes'));
 
 module.exports = router;

@@ -14,5 +14,6 @@ router.patch('/:code', requireUser('HOST', 'ADMIN'), rules.statusRules, validate
 // Nested routes for players inside a session
 router.post('/:code/players', requireUser(), rules.joinRules, validate, playerController.join);
 router.get('/:code/players', rules.codeParam, validate, playerController.list);
+router.use('/sessions', require('./session.routes'));
 
 module.exports = router;

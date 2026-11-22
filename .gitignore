@@ -1,8 +1,8 @@
 # dependencies - anyone can rebuild these with "npm install"
 node_modules/
-
-# secrets - never commit real passwords
-.env
+coverage/
+uploads/*/*
+!uploads/*/.gitkeep
 
 # editor and OS noise
 .vscode/

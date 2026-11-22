@@ -14,8 +14,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Levels',
-          key: 'level_id'
+          model: 'levels', // <-- Changed from 'Levels' to lowercase 'levels'
+          key: 'id'        // References the 'id' primary key of levels
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'

@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Game_Progresses', {
+    await queryInterface.createTable('GameProgress', {
       progress_id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,8 +14,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Players',
-          key: 'player_id'
+          model: 'players', 
+          key: 'player_id' // <-- Fixed: players primary key is 'player_id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
@@ -24,16 +24,21 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Levels',
-          key: 'level_id'
+          model: 'levels', 
+          key: 'id' // Correct: levels primary key is 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
       score: {
         allowNull: false,
-        defaultValue: 0,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },
+      completed: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
@@ -49,6 +54,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Game_Progresses');
+    await queryInterface.dropTable('GameProgress');
   }
 };

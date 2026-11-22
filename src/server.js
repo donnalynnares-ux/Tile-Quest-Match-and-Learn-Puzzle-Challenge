@@ -1,13 +1,22 @@
-// Entry point: load config, then start listening.
-const env = require('./config/env');
-const app = require('./app');
+const express = require('express');
+const app = express(); // 1. App must be defined first!
 
-// Express 5 hands a start-up failure (for example, port already in use)
-// to this callback as "error", so we must check it before claiming success.
-app.listen(env.port, (error) => {
-  if (error) {
-    console.error(`Could not start the API: ${error.message}`);
-    process.exit(1);
-  }
-  console.log(`API listening on http://localhost:${env.port}/api/v1`);
+// Middleware (body parsers, cors, etc.)
+app.use(express.json());
+
+// Your Routes (e.g., app.use('/api/levels', levelRoutes));
+
+// 2. Global Error Handler MUST go at the very bottom (after routes)
+app.use((err, req, res, next) => {
+  console.error("Unhandled Error Stack:", err.stack);
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || 'Internal Server Error',
+    error: process.env.NODE_ENV === 'development' ? err : {}
+  });
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

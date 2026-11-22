@@ -14,8 +14,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Levels',
-          key: 'level_id'
+          model: 'levels', // <-- Lowercase 'levels' to match table name
+          key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
